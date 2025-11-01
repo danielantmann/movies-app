@@ -1,15 +1,15 @@
 import { Text, View } from 'react-native';
 import React, { Component } from 'react';
 import '../global.css';
+import { nowPlayingAction } from '@/core/actions/movies/now-playing.actions';
 
-export class RootLayout extends Component {
-  render() {
-    return (
-      <View>
-        <Text>RootLayout</Text>
-      </View>
-    );
-  }
-}
+const RootLayout = () => {
+  nowPlayingAction();
+  return (
+    <View>
+      <Text>RootLayout</Text>
+    </View>
+  );
+};
 
 export default RootLayout;
