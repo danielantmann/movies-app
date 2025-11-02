@@ -1,12 +1,21 @@
-import { Text, View } from 'react-native';
-import React, { Component } from 'react';
+import React from 'react';
 import '../global.css';
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import 'react-native-url-polyfill/auto';
+import 'cross-fetch/polyfill';
+import { Stack } from 'expo-router';
+
+const queryClient = new QueryClient();
 
 const RootLayout = () => {
   return (
-    <View>
-      <Text>RootLayout</Text>
-    </View>
+    <QueryClientProvider client={queryClient}>
+      <Stack
+        screenOptions={{
+          headerShown: false,
+        }}
+      />
+    </QueryClientProvider>
   );
 };
 
