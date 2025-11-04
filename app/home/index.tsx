@@ -2,8 +2,8 @@ import { View, Text, ActivityIndicator, ScrollView } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 import { useMovies } from '@/presentation/hooks/useMovies';
-import MainSlideShow from '@/presentation/components/movie/MainSlideShow';
-import MovieHorizontalList from '@/presentation/components/movie/MovieHorizontalList';
+import MainSlideShow from '@/presentation/components/movies/MainSlideShow';
+import MovieHorizontalList from '@/presentation/components/movies/MovieHorizontalList';
 
 const HomeScreen = () => {
   const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } = useMovies();

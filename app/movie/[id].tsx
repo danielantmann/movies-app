@@ -3,6 +3,8 @@ import React from 'react';
 import { useLocalSearchParams } from 'expo-router';
 
 import { useMovie } from '@/presentation/hooks/useMovie';
+import MovieHeader from '@/presentation/components/movie/MovieHeader';
+import MovieDescription from '@/presentation/components/movie/MovieDescription';
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
@@ -19,7 +21,13 @@ const MovieScreen = () => {
 
   return (
     <ScrollView>
-      <Text>{movieQuery.data.title}</Text>
+      <MovieHeader
+        poster={movieQuery.data.poster}
+        title={movieQuery.data.title}
+        originalTitle={movieQuery.data.originalTitle}
+      />
+
+      <MovieDescription movie={movieQuery.data} />
     </ScrollView>
   );
 };
