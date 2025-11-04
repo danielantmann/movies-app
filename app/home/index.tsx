@@ -24,11 +24,23 @@ const HomeScreen = () => {
 
         <MainSlideShow movies={nowPlayingQuery.data ?? []} />
 
-        <MovieHorizontalList title="Popular Movies" movies={popularQuery.data ?? []} />
+        <MovieHorizontalList
+          title="Popular Movies"
+          movies={popularQuery.data?.pages.flat() ?? []}
+          loadNextPage={() => popularQuery.fetchNextPage()}
+        />
 
-        <MovieHorizontalList title="Top Rated" movies={topRatedQuery.data ?? []} />
+        <MovieHorizontalList
+          title="Top Rated"
+          movies={topRatedQuery.data?.pages.flat() ?? []}
+          loadNextPage={() => topRatedQuery.fetchNextPage()}
+        />
 
-        <MovieHorizontalList title="Upcoming" movies={upcomingQuery.data ?? []} />
+        <MovieHorizontalList
+          title="Upcoming"
+          movies={upcomingQuery.data?.pages.flat() ?? []}
+          loadNextPage={() => upcomingQuery.fetchNextPage()}
+        />
       </View>
     </ScrollView>
   );

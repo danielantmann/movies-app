@@ -1,5 +1,6 @@
 import { Pressable, Image } from 'react-native';
 import React from 'react';
+import { router } from 'expo-router';
 
 interface Props {
   id: number;
@@ -8,7 +9,7 @@ interface Props {
 }
 const MoviePoster = ({ id, poster, smallPoster = false }: Props) => {
   return (
-    <Pressable className="px-2  active:opacity-90">
+    <Pressable className="px-2  active:opacity-90" onPress={() => router.push(`/movie/${id}`)}>
       <Image
         source={{ uri: poster }}
         className="h-full w-full rounded-2xl shadow-lg"
