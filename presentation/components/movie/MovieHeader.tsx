@@ -29,7 +29,7 @@ const MovieHeader = ({ poster, originalTitle, title }: Props) => {
           position: 'absolute',
           zIndex: 99,
           elevation: 9,
-          top: 40,
+          top: 20,
           left: 10,
         }}>
         <Pressable onPress={() => router.dismiss()}>

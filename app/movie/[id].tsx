@@ -7,6 +7,7 @@ import MovieHeader from '@/presentation/components/movie/MovieHeader';
 import MovieDescription from '@/presentation/components/movie/MovieDescription';
 import { getMovieCastAction } from '@/core/actions/movie/get-movie-cast.action';
 import MovieCast from '@/presentation/components/movie/MovieCast';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 const MovieScreen = () => {
   const { id } = useLocalSearchParams();
@@ -22,17 +23,19 @@ const MovieScreen = () => {
   }
 
   return (
-    <ScrollView>
-      <MovieHeader
-        poster={movieQuery.data.poster}
-        title={movieQuery.data.title}
-        originalTitle={movieQuery.data.originalTitle}
-      />
+    <SafeAreaView style={{ flex: 1 }} edges={['top']}>
+      <ScrollView>
+        <MovieHeader
+          poster={movieQuery.data.poster}
+          title={movieQuery.data.title}
+          originalTitle={movieQuery.data.originalTitle}
+        />
 
-      <MovieDescription movie={movieQuery.data} />
+        <MovieDescription movie={movieQuery.data} />
 
-      <MovieCast cast={castQuery.data ?? []} />
-    </ScrollView>
+        <MovieCast cast={castQuery.data ?? []} />
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
