@@ -2,9 +2,18 @@ import { movieApi } from '@/core/api/movie-api';
 import { MovieDBMovieResponse } from '@/infrastructure/interfaces/moviedb-response';
 import { MovieMapper } from '@/infrastructure/mappers/movie.mapper';
 
-export const nowPlayingAction = async () => {
+interface Options {
+  page?: number;
+  limit?: number;
+}
+
+export const upcomingAction = async ({ page = 1, limit = 10 }: Options) => {
   try {
-    const { data } = await movieApi.get<MovieDBMovieResponse>('/now_playing');
+    const { data } = await movieApi.get<MovieDBMovieResponse>('/upcoming', {
+      params: {
+        page: page,
+      },
+    });
     const movies = data.results.map(MovieMapper.fromMovieDBToMovie);
     return movies;
   } catch (error) {
